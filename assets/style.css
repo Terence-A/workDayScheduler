@@ -29,8 +29,8 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  font-size: 20px;
   font-weight: 500;
+  padding-right: 10px;
 }
 
 .past {
@@ -66,4 +66,11 @@ textarea {
 
 .lead {
   font-weight: 400;
+}
+
+@media only screen and (max-width: 400px) {
+  .hour {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
 }
