@@ -44,4 +44,15 @@ $(function () {
       //   localStorage.setItem("message", blockText);
     }
   });
+  //   set text and timestamps in timeblocks
+  const setItemBlocks = () => {
+    for (let i = 0; i < storeItemsArr.length; i++) {
+      const item = storeItemsArr[i];
+      const time = item.time;
+      const text = item.text;
+      // Set the value of corresponding textarea using data-id attribute
+      $(`section[data-id="${time}"] textarea`).val(text);
+    }
+  };
+  setItemBlocks();
 });
