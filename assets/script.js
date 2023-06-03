@@ -33,12 +33,15 @@ $(function () {
     let timeStamp = $(this).parent("section")[0].dataset.id;
     // console.log(blockText);
     // console.log(timeStamp);
-
-    let obj = { text: blockText, time: timeStamp };
-    storeItemsArr.push(obj);
-    localStorage.setItem("storeData", JSON.stringify(storeItemsArr));
-    // console.log(storeItemsArr);
-    //   localStorage.setItem("time", timeStamp);
-    //   localStorage.setItem("message", blockText);
+    if (!blockText) {
+      return;
+    } else {
+      let obj = { text: blockText, time: timeStamp };
+      storeItemsArr.push(obj);
+      localStorage.setItem("storeData", JSON.stringify(storeItemsArr));
+      // console.log(storeItemsArr);
+      //   localStorage.setItem("time", timeStamp);
+      //   localStorage.setItem("message", blockText);
+    }
   });
 });
