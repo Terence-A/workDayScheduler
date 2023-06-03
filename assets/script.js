@@ -11,7 +11,6 @@ $(function () {
   const setColorBlocks = () => {
     for (let i = 0; i < timeBlock.length; i++) {
       if (timeBlock[i].dataset.id < currentTime) {
-        console.log(timeBlock[i].dataset.id);
         timeBlock[i].classList.remove("future");
         timeBlock[i].classList.remove("present");
         timeBlock[i].classList.add("past");
