@@ -4,6 +4,9 @@ $(function () {
   $("#currentDay").text(today.format("dddd MMM D, YYYY"));
   let timeBlock = $(".time-block");
 
+  //   console.log(timeBlock[]);
+  let storeItemsArr = JSON.parse(localStorage.getItem("storeData")) || [];
+
   //   set colors of timeblocks
   const setColorBlocks = () => {
     for (let i = 0; i < timeBlock.length; i++) {
@@ -22,4 +25,20 @@ $(function () {
   };
   // run color timeblocks
   setColorBlocks();
+
+  //   get text and timestamp on save button
+  const saveBlock = $(".saveBtn").click(function (e) {
+    e.preventDefault();
+    let blockText = $(this).siblings("textarea").val();
+    let timeStamp = $(this).parent("section")[0].dataset.id;
+    // console.log(blockText);
+    // console.log(timeStamp);
+
+    let obj = { text: blockText, time: timeStamp };
+    storeItemsArr.push(obj);
+    localStorage.setItem("storeData", JSON.stringify(storeItemsArr));
+    // console.log(storeItemsArr);
+    //   localStorage.setItem("time", timeStamp);
+    //   localStorage.setItem("message", blockText);
+  });
 });
