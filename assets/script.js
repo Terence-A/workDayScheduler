@@ -1,11 +1,11 @@
 $(function () {
   let today = dayjs();
   let currentTime = dayjs().$H;
-  $("#currentDay").text(today.format("dddd MMM D, YYYY"));
   let timeBlock = $(".time-block");
-
-  //   console.log(timeBlock[]);
   let storeItemsArr = JSON.parse(localStorage.getItem("storeData")) || [];
+
+  //show current date in header
+  $("#currentDay").text(today.format("dddd MMM D, YYYY"));
 
   //   set colors of timeblocks
   const setColorBlocks = () => {
@@ -31,17 +31,13 @@ $(function () {
     e.preventDefault();
     let blockText = $(this).siblings("textarea").val();
     let timeStamp = $(this).parent("section")[0].dataset.id;
-    // console.log(blockText);
-    // console.log(timeStamp);
+
     if (!blockText) {
       return;
     } else {
       let obj = { text: blockText, time: timeStamp };
       storeItemsArr.push(obj);
       localStorage.setItem("storeData", JSON.stringify(storeItemsArr));
-      // console.log(storeItemsArr);
-      //   localStorage.setItem("time", timeStamp);
-      //   localStorage.setItem("message", blockText);
     }
   });
   //   set text and timestamps in timeblocks
@@ -54,12 +50,13 @@ $(function () {
       $(`section[data-id="${time}"] textarea`).val(text);
     }
   };
+  //   set the item blocks to view events saved
   setItemBlocks();
+
   // clear button
   $("#clear-btn").on("click", () => {
     localStorage.clear();
     $("section,textarea").val("");
     storeItemsArr = [];
-    // console.log(storeItemsArr);
   });
 });
