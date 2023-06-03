@@ -55,4 +55,11 @@ $(function () {
     }
   };
   setItemBlocks();
+  // clear button
+  $("#clear-btn").on("click", () => {
+    localStorage.clear();
+    $("section,textarea").val("");
+    storeItemsArr = [];
+    // console.log(storeItemsArr);
+  });
 });
