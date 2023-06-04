@@ -30,13 +30,13 @@ $(function () {
     e.preventDefault();
     let blockText = $(this).siblings("textarea").val();
     let timeStamp = $(this).parent("section")[0].dataset.id;
-
     if (!blockText) {
       return;
     } else {
       let obj = { text: blockText, time: timeStamp };
       storeItemsArr.push(obj);
       localStorage.setItem("storeData", JSON.stringify(storeItemsArr));
+      $("#verify-save").text(`Event saved: ${$(this).siblings("div").text()}`);
     }
   });
   //   set text and timestamps in timeblocks
@@ -46,7 +46,7 @@ $(function () {
       const time = item.time;
       const text = item.text;
       // Set the value of corresponding textarea using data-id attribute
-      $(`section[data-id="${time}"] textarea`).val(text);
+      //   $(`section[data-id="${time}"] textarea`).val(text);
     }
   };
   //   set the item blocks to view events saved
@@ -57,5 +57,6 @@ $(function () {
     localStorage.clear();
     $("section,textarea").val("");
     storeItemsArr = [];
+    $("#verify-save").text("");
   });
 });
