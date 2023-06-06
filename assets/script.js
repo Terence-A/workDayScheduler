@@ -46,7 +46,7 @@ $(function () {
       const time = item.time;
       const text = item.text;
       // Set the value of corresponding textarea using data-id attribute
-      //   $(`section[data-id="${time}"] textarea`).val(text);
+      $(`section[data-id="${time}"] textarea`).val(text);
     }
   };
   //   set the item blocks to view events saved
